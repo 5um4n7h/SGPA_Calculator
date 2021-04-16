@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SGPA Calculator</string>
+    <string-array name="Semesters">
+        <item>Select</item>
+        <item>Physics Cycle (I/II Sem)</item>
+        <item>Chemistry Cycle (I/II Sem)</item>
+        <item>III Sem</item>
+        <item>IV Sem</item>
+        <item>V Sem</item>
+        <item>VI Sem</item>
+    </string-array>
+</resources>

@@ -16,18 +16,5 @@
         <item name="android:textColor">#ffffff</item>
         <item name="colorControlNormal">@color/purple_200</item>
     </style>
-    <style name="Marks" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="android:layout_weight">15</item>
-        <item name="android:ems">1</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:inputType">number</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:gravity">center</item>
-
-
-
-
-    </style>
 
 </resources>

@@ -1,15 +1,10 @@
 package sumanth.sgpacalculator
 
 
-import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import androidx.activity.OnBackPressedDispatcher
 import androidx.appcompat.app.AppCompatActivity
 import com.github.johnpersano.supertoasts.library.Style
 import com.github.johnpersano.supertoasts.library.SuperActivityToast
@@ -27,25 +22,14 @@ class MainActivity : AppCompatActivity() {
                 R.layout.spinner_items, sems)
 
 
-
     }
-
 
 
     fun proceed(view: View) {
 
 
-
-
-        if(isDarkThemeOn()){
-            Log.d("TAG", "proceed: true")
-        }else
-        {
-            Log.d("TAG", "proceed: false")
-        }
-
-        val selected:Int = spinnerSem.selectedItemPosition
-        if(selected!=0){
+        val selected: Int = spinnerSem.selectedItemPosition
+        if (selected != 0) {
             val intent = Intent(this, CalculationActivity::class.java)
             intent.putExtra("selected", selected)
             startActivity(intent)
@@ -60,12 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
     }
 
-    fun Context.isDarkThemeOn(): Boolean {
-        return resources.configuration.uiMode and
-                Configuration.UI_MODE_NIGHT_MASK == UI_MODE_NIGHT_YES
-    }
 }
 

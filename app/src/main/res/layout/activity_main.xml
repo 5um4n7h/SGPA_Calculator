@@ -10,7 +10,7 @@
     android:padding="8dp"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -18,14 +18,14 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="55dp">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select Your Semester"
             android:textSize="18sp" />
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -35,7 +35,7 @@
             android:orientation="vertical"
             android:padding="2dp">
 
-            <Spinner
+            <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinnerSem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,22 +44,23 @@
                 android:gravity="left"
                 android:minWidth="200dp"
                 android:padding="8dp" />
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnProceed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="proceed"
             android:text="Proceed" />
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/tL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        </LinearLayout>
-    </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

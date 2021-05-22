@@ -1,20 +1,18 @@
 package sumanth.sgpacalculator
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_calculation.*
-import java.lang.Exception
 
 class CalculationActivity : AppCompatActivity() {
 
     var crdtPnC = listOf<Int>()
     val TAG = "CalAct"
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +22,6 @@ class CalculationActivity : AppCompatActivity() {
         Log.d("Second", "onCreate: "+selected)
 
         when(selected){
-
 
             1,2 -> {
                 tvTitle.setText("I / II Semester")
@@ -37,11 +34,11 @@ class CalculationActivity : AppCompatActivity() {
                 tvSub7.setText("18***17 / 18***27")
                 tvSub8.setText("18***18 / 18***28")
                 tvSub9.visibility= View.GONE
-                etMarks9.visibility = View.INVISIBLE
+                etMarks9.visibility = View.GONE
                 crdtPnC = listOf(4,4,3,3,3,1,1,1,0)
 
-
             }
+
             3 -> {
 
                 tvTitle.setText("III Semester")
@@ -102,7 +99,7 @@ class CalculationActivity : AppCompatActivity() {
                 tvSub7.setText("18***67")
                 tvSub8.setText("18***68")
                 tvSub9.visibility= View.GONE
-                etMarks9.visibility = View.INVISIBLE
+                etMarks9.visibility = View.GONE
                 crdtPnC = listOf(4,4,4,3,3,2,2,2,0)
 
             }
@@ -172,6 +169,7 @@ class CalculationActivity : AppCompatActivity() {
                 GP.add(0)
             }
         }
+
         for(i : Int in 0 until  GP.size)
         Log.d(TAG, "calculate: GP: "+ GP[i])
 
@@ -179,7 +177,6 @@ class CalculationActivity : AppCompatActivity() {
         for((j, i : Int) in GP.withIndex()){
 
                 CP.add(i* crdtPnC[j])
-
 
         }
 
@@ -209,6 +206,7 @@ class CalculationActivity : AppCompatActivity() {
     }
 
     private fun StoI(etMarks: EditText?): Int {
+
         val result : Int
         try {
             result = Integer.parseInt(etMarks?.text.toString())

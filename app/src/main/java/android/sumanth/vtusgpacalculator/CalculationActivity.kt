@@ -110,6 +110,8 @@ class CalculationActivity : AppCompatActivity() {
 
     }
 
+
+    //function to clear all content
     fun clear(view: View) {
 
         etMarks.setText("")
@@ -128,7 +130,6 @@ class CalculationActivity : AppCompatActivity() {
 
 
     fun calculate(view: View) {
-
 
        val m1  = TxtToInt(etMarks)
        val m2  = TxtToInt(etMarks2)

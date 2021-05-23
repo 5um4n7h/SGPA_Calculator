@@ -2,7 +2,6 @@ package sumanth.sgpacalculator
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -10,16 +9,18 @@ import kotlinx.android.synthetic.main.activity_calculation.*
 
 class CalculationActivity : AppCompatActivity() {
 
-    var crdtPnC = listOf<Int>()
-    val TAG = "CalAct"
+    var Credits = listOf<Int>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculation)
 
-        val selected : Int = intent.getIntExtra("selected",9)
-        Log.d("Second", "onCreate: "+selected)
+        //fetching selected sem
+        val selected : Int = intent.getIntExtra("selected",1)
+
+        //Log.d("Second", "onCreate: "+selected)
+
 
         when(selected){
 
@@ -35,7 +36,7 @@ class CalculationActivity : AppCompatActivity() {
                 tvSub8.setText("18***18 / 18***28")
                 tvSub9.visibility= View.GONE
                 etMarks9.visibility = View.GONE
-                crdtPnC = listOf(4,4,3,3,3,1,1,1,0)
+                Credits = listOf(4,4,3,3,3,1,1,1,0)
 
             }
 
@@ -51,7 +52,7 @@ class CalculationActivity : AppCompatActivity() {
                 tvSub7.setText("18***37")
                 tvSub8.setText("18***38")
                 tvSub9.setText("18***39")
-                crdtPnC = listOf<Int>(3,4,3,3,3,3,2,2,1)
+                Credits = listOf<Int>(3,4,3,3,3,3,2,2,1)
 
 
 
@@ -69,7 +70,7 @@ class CalculationActivity : AppCompatActivity() {
                 tvSub7.setText("18***47")
                 tvSub8.setText("18***48")
                 tvSub9.setText("18***49")
-                crdtPnC = listOf<Int>(3,4,3,3,3,3,2,2,1)
+                Credits = listOf<Int>(3,4,3,3,3,3,2,2,1)
 
             }
 
@@ -84,7 +85,7 @@ class CalculationActivity : AppCompatActivity() {
                 tvSub7.setText("18***57")
                 tvSub8.setText("18***58")
                 tvSub9.setText("18***59")
-                crdtPnC = listOf(3,4,4,3,3,3,2,2,1)
+                Credits = listOf(3,4,4,3,3,3,2,2,1)
 
             }
 
@@ -100,13 +101,9 @@ class CalculationActivity : AppCompatActivity() {
                 tvSub8.setText("18***68")
                 tvSub9.visibility= View.GONE
                 etMarks9.visibility = View.GONE
-                crdtPnC = listOf(4,4,4,3,3,2,2,2,0)
+                Credits = listOf(4,4,4,3,3,2,2,2,0)
 
             }
-
-
-
-
 
 
         }
@@ -129,91 +126,99 @@ class CalculationActivity : AppCompatActivity() {
 
     }
 
-    @SuppressLint("SetTextI18n")
+
     fun calculate(view: View) {
 
 
-       val m1  = StoI(etMarks)
-       val m2  = StoI(etMarks2)
-       val m3  = StoI(etMarks3)
-       val m4  = StoI(etMarks4)
-       val m5  = StoI(etMarks5)
-       val m6  = StoI(etMarks6)
-       val m7  = StoI(etMarks7)
-       val m8  = StoI(etMarks8)
-       val m9  = StoI(etMarks9)
-
+       val m1  = TxtToInt(etMarks)
+       val m2  = TxtToInt(etMarks2)
+       val m3  = TxtToInt(etMarks3)
+       val m4  = TxtToInt(etMarks4)
+       val m5  = TxtToInt(etMarks5)
+       val m6  = TxtToInt(etMarks6)
+       val m7  = TxtToInt(etMarks7)
+       val m8  = TxtToInt(etMarks8)
+       val m9  = TxtToInt(etMarks9)
 
         val Marks  = listOf(m1,m2,m3,m4,m5,m6,m7,m8,m9)
-        val GP : MutableList<Int> = mutableListOf<Int>()
+
+        //init
+        val GradePoints  = mutableListOf<Int>()
+        val CreditPoints : MutableList<Int> = mutableListOf()
+        var CreditPointsSum = 0.0
+        var CreditsSum = 0.0
+
+
+        //calculating Grade Points
         for(m in Marks){
             if (m>=90){
-                GP.add(10)
+                GradePoints.add(10)
             }
             if(m in 80..89){
-                GP.add(9)
+                GradePoints.add(9)
             }
             if(m in 70..79){
-                GP.add(8)
+                GradePoints.add(8)
             }
             if(m in 60..69){
-                GP.add(7)
+                GradePoints.add(7)
             }
             if(m in 45..59){
-                GP.add(6)
+                GradePoints.add(6)
             }
             if(m in 40..44){
-                GP.add(4)
+                GradePoints.add(4)
             }
             if(m < 40){
-                GP.add(0)
+                GradePoints.add(0)
             }
         }
 
-        for(i : Int in 0 until  GP.size)
-        Log.d(TAG, "calculate: GP: "+ GP[i])
+//        for(i : Int in 0 until  GradePoints.size)
+//        Log.d(TAG, "calculate: GP: "+ GradePoints[i])
 
-        val CP : MutableList<Int> = mutableListOf()
-        for((j, i : Int) in GP.withIndex()){
+        //credit points calculation
+        for((j, i : Int) in GradePoints.withIndex())
+            CreditPoints.add(i* Credits[j])
 
-                CP.add(i* crdtPnC[j])
+//        for(i : Int in 0 until  CreditPoints.size)
+//            Log.d(TAG, "calculate: CP: "+ CreditPoints.get(i))
 
-        }
 
-        for(i : Int in 0 until  CP.size)
-            Log.d(TAG, "calculate: CP: "+ CP.get(i))
-
-        var sum1 = 0.00
-        for(i : Int in 0 until  CP.size) {
-            Log.d(TAG, "calculate: " + CP[i])
-            sum1+= CP[i]
-            Log.d(TAG, "calculate: sum1 : $sum1")
-        }
-
-        var sum2 = 0.00
-        for(i : Int in crdtPnC.indices) {
-            Log.d(TAG, "calculate: " + crdtPnC[i])
-            sum2+= crdtPnC[i]
-            Log.d(TAG, "calculate: sum2 : $sum2")
+        for(i : Int in 0 until  CreditPoints.size) {
+           // Log.d(TAG, "calculate: " + CreditPoints[i])
+            CreditPointsSum+= CreditPoints[i]
+          //  Log.d(TAG, "calculate: sum1 : $CreditPointsSum")
         }
 
 
-        Log.d(TAG, "calculate: "+sum1+" , "+sum2)
+        for(i : Int in Credits.indices) {
+            //Log.d(TAG, "calculate: " + Credits[i])
+            CreditsSum+= Credits[i]
+            //Log.d(TAG, "calculate: sum2 : $CreditsSum")
+        }
 
-        val result : Double = String.format("%.2f",sum1 / sum2).toDouble()
+
+        //Log.d(TAG, "calculate: "+CreditPointsSum+" , "+CreditsSum)
+
+        val result : Double = String.format("%.2f",CreditPointsSum / CreditsSum).toDouble()
         tvResult.setText("Your SGPA is : $result")
 
     }
 
-    private fun StoI(etMarks: EditText?): Int {
+
+
+    private fun TxtToInt(etMarks: EditText?): Int {
 
         val result : Int
         try {
+            //if marks available
             result = Integer.parseInt(etMarks?.text.toString())
-
+            return result
         }catch (nE : Exception){
+            //if marks is NA
             return  0
         }
-        return result
+
     }
 }

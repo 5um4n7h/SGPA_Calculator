@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">?attr/colorOnPrimary</item>
         <item name="backgroundColor">#191919</item>
         <item name="android:textColor">#ffffff</item>
         <item name="colorControlNormal">@color/purple_200</item>
